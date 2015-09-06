@@ -1,7 +1,7 @@
 {
   "name": "lasso",
   "version": "1.0.0",
-  "description": "A component management language.",
+  "description": "A front-end component management language.",
   "main": "index.coffee",
   "author": "Dustin Dowell",
   "license": "MIT",

@@ -1,2 +1,2 @@
 # lasso
-A component management language.
+A front-end component management language.
