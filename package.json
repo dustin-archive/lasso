@@ -1,0 +1,12 @@
+{
+  "name": "lasso",
+  "version": "1.0.0",
+  "description": "A component management language.",
+  "main": "index.coffee",
+  "author": "Dustin Dowell",
+  "license": "MIT",
+  "dependencies": {
+    "coffee-script": "^1.10.0",
+    "gulp": "^3.9.0"
+  }
+}
