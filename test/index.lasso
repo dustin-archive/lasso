@@ -1,6 +1,10 @@
 @coffee
-  $('.block').on 'click', ->
-    $(this).toggleClass('orange')
+
+
+    $('.block').on 'click', ->
+
+      $(this).toggleClass('orange')
+
 
 @sass
   .block

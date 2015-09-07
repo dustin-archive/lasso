@@ -1,8 +1,26 @@
 fs = require 'fs'
 
 module.exports =
+  indent: (input) ->
+    count = 0
+    for character in input
+      if character == ' '
+        count++
+      else
+        break
+    for i in [1..count]
+      input = input.replace(/^ /gm, '')
+    return input
+
+  lines: (input) ->
+    return input.replace(/^\n*/gm, '')
+
+  clean: (input) ->
+    return @indent @lines input
+
   export: (name, extension, input) ->
-    return fs.writeFile __dirname + '/export/' + name + '.' + extension, input, (err) ->
+    path = __dirname + '/export/' + name + '.' + extension
+    return fs.writeFile path, @clean(input), (err) ->
       throw err if err
 
   process: (input) ->
@@ -19,11 +37,8 @@ module.exports =
       index_to = index_array[i + 1]
       if index_to
         output = input.slice(index_from, index_to)
-        console.log output
         @export('index' + i, 'txt', output)
       else
         output = input.slice(index_from)
-        console.log output
         @export('index' + i, 'txt', output)
-
     return ''
