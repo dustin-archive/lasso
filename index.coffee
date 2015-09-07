@@ -2,15 +2,17 @@ fs = require 'fs'
 
 module.exports =
   clean_indent: (input) ->
+    if typeof input == 'string'
+      input = new Buffer input
     count = 0
     for character in input
-      if character == ' '
+      if character == 32
         count++
       else
         break
-    for i in [1..count]
-      input = input.replace(/^ /gm, '')
-    return input
+    for [1..count]
+      input = input.toString().replace(/^ /gm, '')
+    return new Buffer input
 
   clean_newline: (input) ->
     return input.replace(/^\n*/gm, '')
@@ -41,4 +43,3 @@ module.exports =
       else
         output = input.slice(index_from)
         @export('index' + i, 'txt', output)
-    return ''
