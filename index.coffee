@@ -24,10 +24,10 @@ module.exports =
       throw err if err
 
   process: (input) ->
-    languages = ['coffee', 'scss', 'sass', 'jade']
+    language_array = ['coffee', 'scss', 'sass', 'jade']
     input = input.toString()
     index_array = []
-    for language in languages
+    for language in language_array
       selector = '@' + language
       index = input.indexOf(selector)
       if index != -1
