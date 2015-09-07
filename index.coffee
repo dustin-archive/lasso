@@ -42,3 +42,4 @@ module.exports =
       else
         output = input.slice(index_from)
         @export('index' + i, 'txt', output)
+    return
