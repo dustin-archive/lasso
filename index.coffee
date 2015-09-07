@@ -1,7 +1,7 @@
 fs = require 'fs'
 
 module.exports =
-  indent: (input) ->
+  clean_indent: (input) ->
     count = 0
     for character in input
       if character == ' '
@@ -12,23 +12,23 @@ module.exports =
       input = input.replace(/^ /gm, '')
     return input
 
-  lines: (input) ->
+  clean_newline: (input) ->
     return input.replace(/^\n*/gm, '')
 
-  clean: (input) ->
-    return @indent @lines input
+  clean_whitespace: (input) ->
+    return @clean_indent @clean_newline input
 
   export: (name, extension, input) ->
     path = __dirname + '/export/' + name + '.' + extension
-    return fs.writeFile path, @clean(input), (err) ->
+    return fs.writeFile path, @clean_whitespace(input), (err) ->
       throw err if err
 
   process: (input) ->
     languages = ['coffee', 'scss', 'sass', 'jade']
     input = input.toString()
     index_array = []
-    for lasso in languages
-      selector = '@' + lasso
+    for language in languages
+      selector = '@' + language
       index = input.indexOf(selector)
       if index != -1
         index_array.push(index) if index != 0
