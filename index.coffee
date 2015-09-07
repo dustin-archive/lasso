@@ -2,8 +2,7 @@ fs = require 'fs'
 
 module.exports =
   clean_indent: (input) ->
-    if typeof input == 'string'
-      input = new Buffer input
+    input = new Buffer input if typeof input == 'string'
     count = 0
     for character in input
       if character == 32
